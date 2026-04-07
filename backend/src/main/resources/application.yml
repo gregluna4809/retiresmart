@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: retiresmart
+  datasource:
+    url: jdbc:postgresql://localhost:5433/retiresmart
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+
+server:
+  port: 8080
+
+jwt:
+  secret: retiresmart-super-secret-key-that-is-long-enough-for-jwt-hmac-sha256
+  expiration: 86400000
